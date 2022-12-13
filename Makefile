@@ -1,4 +1,4 @@
-all: pbds.out
+all: pbds.out lct.out
 
 test_pbds: pbds.out
 	./pbds.out
