@@ -11,7 +11,7 @@
  *         find_by_order(size_type order) order counts from 0
  *         order_of_key(const_key_reference r_key)
  *
- *      	 set the second parameter to null_type so to get a set
+ *         set the second parameter to null_type so to get a set
  *
  *         b_tree_tag can be replaced by splay_tree_tag, ov_tree_tag
  */
