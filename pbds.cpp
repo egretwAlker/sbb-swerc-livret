@@ -1,5 +1,5 @@
 // https://gcc.gnu.org/onlinedocs/libstdc++/manual/policy_data_structures_design.html
-/* Don't use [] to set values, possibly resulting no pushup
+/* Don't use [] to set values, possibly resulting to no pushup
  * No overlapping key value allowed
  * basics: begin(), end(), size(), empty(), clear(), find(const Key)
  * 				 lower_bound(const Key), upper_bound(const Key), erase(iterator)
