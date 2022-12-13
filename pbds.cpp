@@ -1,19 +1,19 @@
 // https://gcc.gnu.org/onlinedocs/libstdc++/manual/policy_data_structures_design.html
-/* Don't use [] to set values, possibly resulting no pushup
+/* Don't use [] to set values, possibly resulting in no pushup
  * No overlapping key value allowed
  * basics: begin(), end(), size(), empty(), clear(), find(const Key)
- * 				 lower_bound(const Key), upper_bound(const Key), erase(iterator)
- * 				 erase(const Key), insert(const pair<Key, Info>)
+ *         lower_bound(const Key), upper_bound(const Key), erase(iterator)
+ *         erase(const Key), insert(const pair<Key, Info>)
  * other:  void join(tree &other) move all elements in other to *this, key values overlapping not allowed
- * 				 void split(const_key_reference r_key, tree &other)
+ *         void split(const_key_reference r_key, tree &other)
  *
  *         set the last parameter to tree_order_statistics_node_update to have the fonctonalities:
- * 				 find_by_order(size_type order) order counts from 0
- * 				 order_of_key(const_key_reference r_key)
+ *         find_by_order(size_type order) order counts from 0
+ *         order_of_key(const_key_reference r_key)
  *
  *      	 set the second parameter to null_type so to get a set
  *
- *				 rb_tree_tag can be replaced by splay_tree_tag, ov_tree_tag
+ *         b_tree_tag can be replaced by splay_tree_tag, ov_tree_tag
  */
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
