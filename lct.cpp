@@ -1,76 +1,96 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int N=1e6+10;
+const int N=1e6+10; // nodes numerated from 0
 namespace LCT {
   int c[N][2], fa[N];
   bool rev[N];
-  bool IsRoot(int x) {
+  bool isRoot(int x) {
     return c[fa[x]][0] != x && c[fa[x]][1] != x;
   }
-  bool Which(int x) {
+  bool which(int x) {
     return c[fa[x]][1] == x;
   }
-  void PushUp(int x) {
+  void pushUp(int x) {
   }
-  void SetRev(int x) {
+  void setRev(int x) {
     rev[x] ^= 1;
     swap(c[x][0], c[x][1]);
   }
-  void PushDown(int x) {
+  void pushDown(int x) {
     if(rev[x]) {
-      SetRev(c[x][0]);
-      SetRev(c[x][1]);
+      setRev(c[x][0]);
+      setRev(c[x][1]);
       rev[x] = 0;
     }
   }
-  void Rotate(int x) {
-    int y = fa[x], d = Which(x);
+  void rotate(int x) {
+    int y = fa[x], d = which(x);
     fa[x] = fa[y];
-    if(!IsRoot(y)) c[fa[y]][Which(y)] = x;
+    if(!isRoot(y)) c[fa[y]][which(y)] = x;
     fa[c[x][!d]] = y; c[y][d] = c[x][!d];
     c[x][!d] = y; fa[y] = x;
   }
-  void Splay(int x) {
+  void splay(int x) {
     static stack<int> sta;
     sta.push(x);
     int t = x;
-    while(!IsRoot(t)) sta.push(t = fa[t]);
-    while(!sta.empty()) PushDown(sta.top()), sta.pop();
-    for(int i=fa[x];!IsRoot(x);Rotate(x), i=fa[x])
-      if(!IsRoot(i)) Rotate(Which(i) == Which(x)?i:x);
-    PushUp(x);
+    while(!isRoot(t)) sta.push(t = fa[t]);
+    while(!sta.empty()) pushDown(sta.top()), sta.pop();
+    for(int i=fa[x];!isRoot(x);rotate(x), i=fa[x])
+      if(!isRoot(i)) rotate(which(i) == which(x)?i:x);
+    pushUp(x);
   }
-  void Access(int x) {
+  void access(int x) {
     for(int t=0;x;t=x, x=fa[x]) {
-      Splay(x);
+      splay(x);
       c[x][1] = t;
-      PushUp(x);
+      pushUp(x);
     }
   }
-  void MakeRoot(int x) {
-    Access(x);
-    Splay(x);
-    SetRev(x);
+  void makeRoot(int x) {
+    access(x);
+    splay(x);
+    setRev(x);
   }
-  inline void Link(int x, int y) {
-    MakeRoot(x);
+  inline void link(int x, int y) { // x is lower
+    makeRoot(x);
     fa[x] = y;
   }
-  void Cut(int x, int y) {
-    MakeRoot(x);
-    Access(y);
-    Access(x);
+  void cut(int x, int y) {
+    makeRoot(x);
+    access(y);
+    access(x);
     fa[y] = 0;
   }
-  int GetRoot(int x) {
-    Access(x); Splay(x);
+  int getRoot(int x) {
+    access(x); splay(x);
     while(c[x][0]) x = c[x][0];
-    Splay(x);
+    splay(x);
     return x;
   }
 }
+using namespace LCT;
+
+int lca(int x, int y) {
+  access(y);
+  access(x);
+  splay(y);
+  return fa[y];
+}
 
 int main(void) {
-  // TESTS!!
+  makeRoot(1);
+  makeRoot(2);
+  makeRoot(3);
+  makeRoot(4);
+  makeRoot(5);
+  link(4, 3);
+  link(5, 3);
+  printf("%d\n", getRoot(4));
+  link(3, 1);
+  printf("%d\n", getRoot(4));
+  link(2, 1);
+  printf("%d\n", lca(5, 4));
+  printf("%d\n", lca(5, 2));
   return 0;
 }
