@@ -1,0 +1,29 @@
+% Team Note Sample Template
+% These codes should be guaranteed, fast enough, short and easy to type.
+
+\documentclass[portrait, 8pt, a4paper, oneside, landscape]{extarticle}
+\usepackage{teamnote}
+\usepackage{svg}
+
+\teamnote{Sorbonne Univertié}{Sorbonne Bleu}
+
+% \ShowUsage
+% \ShowComplexity
+% \HideAuthor
+
+\begin{document}
+
+\thispagestyle{empty}
+\begin{figure}[h!]
+\includesvg[scale=20.0]{sorbonne-science_1.svg}
+\end{figure}
+\newpage
+
+\twocolumn
+\maketitlepage
+\newpage
+
+\section{Data Structures}
+\subsection{Link/cut tree}
+\inputminted{cpp}{src/lct.cpp}
+\end{document}
