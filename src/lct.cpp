@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int N=1e6+10; // nodes numerated from 0
+const int N=1e6+10; // nodes numerated from 1
 namespace LCT {
   int c[N][2], fa[N];
   bool rev[N];
