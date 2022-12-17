@@ -5,7 +5,7 @@ const int N=10010;
 typedef long long ll;
 #define err(...) fprintf(stderr, __VA_ARGS__)
 
-namespace LCT {
+namespace lct {
   int ch[N][2], fa[N]; // notes count from 1
 	int sm[N], val[N];
   bool rev[N];
@@ -24,7 +24,7 @@ namespace LCT {
 		if(ch[x][1]) sm[x] = max(sm[x], sm[ch[x][1]]);
   }
 
-  void setRev(int x) {
+  void setRev(int x) { // rev is for the makeRoot, can be occasionally removed
     rev[x] ^= 1;
     swap(ch[x][0], ch[x][1]);
   }
@@ -102,7 +102,7 @@ namespace LCT {
 		memset(sm, 0, sizeof(sm));
 	}
 }
-using namespace LCT;
+using namespace lct;
 
 void showAux(int x) {
 	if(x) {
