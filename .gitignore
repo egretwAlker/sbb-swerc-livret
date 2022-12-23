@@ -4,6 +4,7 @@ main_bk.tex
 source_bk
 .DS_Store
 *.pdf
+src/input
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
