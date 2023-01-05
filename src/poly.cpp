@@ -8,6 +8,7 @@ using namespace std;
 typedef long long ll;
 typedef pair<int,int> pii;
 typedef vector<int> vi;
+typedef vector<double> vd;
 
 typedef complex<double> C;
 typedef vector<double> vc;
@@ -28,10 +29,31 @@ void fft(vector<C>& a) {
     for(int i=0;i<n;i+=2*k) rep(j, 0, k) {
       C z = rt[j+k]*a[i+j+k];
       a[i+j+k] = a[i+j] - z;
-      
+      a[i+j] += z;
     }
 }
 
+vd conv(const vd& a, const vd& b) {
+  if(a.empty() || b.empty()) return {};
+  vd res(sz(a)+sz(b)-1);
+  int L = 32-__builtin_clz(sz(res)), n = 1<<L;
+  vector<C> in(n), out(n);
+  copy(all(a), begin(in));
+  rep(i, 0, sz(b)) in[i].imag(b[i]);
+  fft(in);
+  for(C& x : in) x *= x;
+  rep(i, 0, n) out[i] = in[-i & (n-1)] - conj(in[i]);
+  fft(out);
+  rep(i, 0, sz(res)) res[i] = imag(out[i]) / (4*n);
+  return res;
+}
+
 int main(void) {
+  vd a = {1, 2, 3};
+  vd b = {4, 5, 6};
+  vd c = conv(a, b);
+  for(double x : c) {
+    printf("%f\n", x);
+  }
   return 0;
 }
