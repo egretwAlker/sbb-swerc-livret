@@ -1,3 +1,5 @@
+#include <bits/stdc++.h> 
+
 struct pairhash {
   template <typename T, typename U>
   std::size_t operator()(const std::pair<T, U> &x) const {

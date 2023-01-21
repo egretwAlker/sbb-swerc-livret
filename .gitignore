@@ -3,6 +3,7 @@
 main_bk.tex
 source_bk
 .DS_Store
+.vscode
 *.pdf
 src/input
 
