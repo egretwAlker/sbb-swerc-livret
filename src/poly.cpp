@@ -33,7 +33,7 @@ void fft(vector<C>& a) {
     }
 }
 
-vd conv(const vd& a, const vd& b) {
+vd convolution(const vd& a, const vd& b) {
   if(a.empty() || b.empty()) return {};
   vd res(sz(a)+sz(b)-1);
   int L = 32-__builtin_clz(sz(res)), n = 1<<L;
@@ -51,7 +51,7 @@ vd conv(const vd& a, const vd& b) {
 int main(void) {
   vd a = {1, 2, 3};
   vd b = {4, 5, 6};
-  vd c = conv(a, b);
+  vd c = convolution(a, b);
   for(double x : c) {
     printf("%f\n", x);
   }
