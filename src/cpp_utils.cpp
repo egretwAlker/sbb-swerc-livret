@@ -10,3 +10,8 @@ struct pairhash {
     return h1 ^ h2;
   }
 };
+
+
+
+// max/min of any type
+std::numeric_limits<TYPE>::max();
