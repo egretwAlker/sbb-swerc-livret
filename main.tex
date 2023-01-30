@@ -49,9 +49,32 @@ A nice trick to handle edges in lct is to assign a virtual node to every edge.
 \section{Network flow}
 \subsection{primal-dual}
 \inputminted{cpp}{src/primal_dual.cpp}
+\subsection{dinic}
+\inputminted{cpp}{src/dinic.cpp}
 
 \section{Miscellaneous}
 \subsection{specific c++ thingies}
 \inputminted{cpp}{src/cpp_utils.cpp}
+
+\subsection{tools}
+
+\begin{minted}{bash}
+rcc() {
+    g++ -ftrapv -Wconversion -std=c++11 -Wall -Wextra -pedantic -fno-common -fno-builtin -o ${@: -1}.out $@ && ./${@: -1}.out
+}
+\end{minted}
+
+.vimrc
+\begin{minted}{c}
+set nocompatible
+syntax on
+set number
+set relativenumber
+set mouse+=a
+set ts=2
+set sw=2
+set autoindent
+set expandtab
+\end{minted}
 
 \end{document}
