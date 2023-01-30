@@ -70,11 +70,14 @@ set nocompatible
 syntax on
 set number
 set relativenumber
+set laststatus=2
 set mouse+=a
+set backspace=indent,eol,start
 set ts=2
 set sw=2
 set autoindent
 set expandtab
+autocmd FileType make setlocal noexpandtab
 \end{minted}
 
 \end{document}
