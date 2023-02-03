@@ -11,7 +11,9 @@ struct pairhash {
   }
 };
 
-
+// fast CIN
+ios_base::sync_with_stdio(false);
+cin.tie(NULL);
 
 // max/min of any type
 std::numeric_limits<TYPE>::max();
