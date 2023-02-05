@@ -11,6 +11,10 @@ struct pairhash {
   }
 };
 
+// fast CIN
+ios_base::sync_with_stdio(false);
+cin.tie(NULL);
+
 // sanic fast
 #pragma GCC optimize(" unroll-loops")
 #pragma gcc optimize("Ofast")
