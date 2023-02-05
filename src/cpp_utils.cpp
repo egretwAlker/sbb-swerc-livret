@@ -11,7 +11,11 @@ struct pairhash {
   }
 };
 
-
+// sanic fast
+#pragma GCC optimize(" unroll-loops")
+#pragma gcc optimize("Ofast")
+#pragma GCC optimization("Ofast")
+#pragma optimize(Ofast)
 
 // max/min of any type
 std::numeric_limits<TYPE>::max();
