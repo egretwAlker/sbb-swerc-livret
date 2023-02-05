@@ -1,4 +1,3 @@
-// https://www.spoj.com/problems/QTREE/
 #include <bits/stdc++.h>
 using namespace std;
 const int N=10010;
@@ -6,7 +5,7 @@ typedef long long ll;
 #define err(...) fprintf(stderr, __VA_ARGS__)
 
 namespace lct {
-  int ch[N][2], fa[N]; // notes count from 1
+  int ch[N][2], fa[N]; // nodes count from 1
 	int sm[N], val[N];
   bool rev[N];
 
@@ -110,74 +109,4 @@ void showAux(int x) {
 		showAux(ch[x][0]);
 		showAux(ch[x][1]);
 	}
-}
-
-vector<int> G[N];
-int n, c[N], vx[N];
-
-void dfs(int u, int fa) {
-	for(auto a : G[u]) {
-		int e = a/(n+1), v = a%(n+1);
-		if(v == fa) continue;
-		vx[e] = v;
-		sm[v] = val[v] = c[e];
-		link(v, u);
-		dfs(v, u);
-	}
-}
-
-int query(int x, int y) {
-	if(x == y) return 0;
-	acclay(y);
-	splay(x);
-	if(fa[y] != 0) {
-		acclay(x);
-		splay(y);
-		return sm[y];
-	}
-	acclay(x);
-	splay(y);
-	if(fa[x] != 0) {
-		acclay(y);
-		splay(x);
-		return sm[x];
-	}
-	int t = sm[y];
-	acclay(y);
-	splay(x);
-	return max(t, sm[x]);
-}
-
-void solve() {
-	clear();
-	scanf("%d", &n);
-	for(int i=1;i<=n;++i) G[i].clear();
-	for(int i=1, x, y;i<n;++i) {
-		scanf("%d%d%d", &x, &y, c+i);
-		G[x].push_back(i*(n+1)+y);
-		G[y].push_back(i*(n+1)+x);
-	}
-	dfs(1, 0);
-	while(1) {
-		char s[10]; int x, y;
-		scanf("%s", s);
-		if(s[0] == 'Q') {
-			scanf("%d%d", &x, &y);
-			printf("%d\n", query(x, y));
-		} else if(s[0] == 'C') {
-			scanf("%d%d", &x, &y);
-			acclay(vx[x]);
-			val[vx[x]] = y;
-			pushUp(vx[x]);
-		} else {
-			break;
-		}
-	}
-}
-
-int main(void) {
-	int T;
-	scanf("%d", &T);
-	while(T--) solve();
-  return 0;
 }
