@@ -36,10 +36,7 @@ void fwt(ll *f) {
       if(j&i) {
         f[j] += f[j^i];
         f[j^i] = 2*f[j^i] - f[j];
-      }
-    }
-  }
-}
+      } } } }
 
 void dfwt(ll *f) {
   for(int i=1;i<=B;i<<=1) {
@@ -47,10 +44,7 @@ void dfwt(ll *f) {
       if(j&i) {
         f[j] = (f[j]-f[j^i])>>1;
         f[j^i] += f[j];
-      }
-    }
-  }
-}
+      } } } }
 
 int main(void) {
   scanf("%d%d", &n, &m);

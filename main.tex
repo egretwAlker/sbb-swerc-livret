@@ -4,6 +4,7 @@
 \documentclass[portrait, 8pt, a4paper, oneside, landscape]{extarticle}
 \usepackage{teamnote}
 \usepackage{svg}
+\usepackage{multicol}
 \usepackage[hidelinks]{hyperref}
 
 \teamnote{Sorbonne Univertié}{Sorbonne Bleu}
@@ -15,21 +16,23 @@
 \begin{document}
 
 \thispagestyle{empty}
-\begin{figure}[h!]
-\includesvg[scale=20.0]{sorbonne-science_1.svg}
-\end{figure}
-\newpage
 
-\twocolumn
-\maketitlepage
-\newpage
+% \begin{figure}[h!]
+% \includesvg[scale=20.0]{sorbonne-science_1.svg}
+% \end{figure}
+% \newpage
+\begin{multicols}{3}
+% \maketitlepage
+% \newpage
 
 \section{Data Structures}
 \subsection{Link/cut tree}
 A nice trick to handle edges in lct is to assign a virtual node to every edge.
 \inputminted{cpp}{src/lct.cpp}
-\subsection{Fenwick tree}
-\inputminted{cpp}{src/fenwick2d.cpp}
+% \subsection{Fenwick tree}
+% \inputminted{cpp}{src/fenwick2d.cpp}
+\subsection{Zen suffix tree}
+\inputminted{cpp}{src/suffixTree.cpp}
 
 \section{Numerical}
 % \subsection{polynomials mod 998244353}
@@ -37,8 +40,8 @@ A nice trick to handle edges in lct is to assign a virtual node to every edge.
 \subsection{FWT}
 \inputminted{cpp}{src/fwt.cpp}
 
-\subsection{real valued polynomials}
-\inputminted{cpp}{src/poly.cpp}
+% \subsection{real valued polynomials}
+% \inputminted{cpp}{src/poly.cpp}
 
 \section{Graph Algorithms}
 
@@ -48,9 +51,9 @@ A nice trick to handle edges in lct is to assign a virtual node to every edge.
 \subsection{A* - shortest path with heuristics}
 \inputminted{rust}{src/a_star.rs}
 
-\section{Network flow}
-\subsection{primal-dual}
-\inputminted{cpp}{src/primal_dual.cpp}
+% \section{Network flow}
+% \subsection{primal-dual}
+% \inputminted{cpp}{src/primal_dual.cpp}
 % \subsection{dinic}
 % \inputminted{cpp}{src/dinic.cpp}
 
@@ -68,20 +71,10 @@ rcc() {
 
 .vimrc
 \begin{minted}{c}
-set nocompatible
-syntax on
-set number
-set relativenumber
-set laststatus=2
-set mouse+=a
-set backspace=indent,eol,start
-set ts=2
-set sw=2
-set autoindent
-set expandtab
-autocmd FileType make setlocal noexpandtab
+set nocompatible | syntax on | set number | set relativenumber | set laststatus=2 | set mouse+=a | set backspace=indent,eol,start | set ts=2 | set sw=2 | set autoindent | set expandtab | autocmd FileType make setlocal noexpandtab
 \end{minted}
 
 \inputminted{bash}{src/bash_util_cmds.sh}
+\end{multicols}
 
 \end{document}
